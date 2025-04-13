@@ -1,5 +1,5 @@
 
-import { useEffect, useState } from 'react';
+import { use, useEffect, useState } from 'react';
 import './App.css'
 import WeatherCard from './WeatherCard';
 
@@ -17,13 +17,16 @@ const getWeatherData = async() => {
 };
 
 
+
+
+
 // APP
 
 function App() {
   
   const [weatherData, setWeatherData] = useState([]);
   const [error, setError] = useState(null);
-  //const [weatherDataHour, setweatherDataHour] = useState([]);
+  const [clickedCard, setClickedCard] = useState([]);
   
   // Catch weather data per days
   useEffect(() => {
@@ -42,6 +45,22 @@ function App() {
     loadweatherData();
   }, []);
 
+  // Click on Card - weather detail
+  function handleCardClick(weatherDay) {
+    
+        try {
+          setClickedCard(weatherDay.hour)
+          console.log("clicked",clickedCard )
+        }
+        catch (err) {
+          console.log(err)
+          setError("Failed to get weather detail data...")
+        } 
+    
+      }
+    useEffect(() => {
+      console.log("clicked card use effect: ", clickedCard);
+    }, [clickedCard])
 
   return (
     <div>
@@ -49,7 +68,11 @@ function App() {
 
       <div className='weather-card-container'>
         {weatherData.map((weatherDay) => (
-          <WeatherCard weatherDay = {weatherDay} key = {weatherDay.date}></WeatherCard>
+          <WeatherCard 
+          weatherDay = {weatherDay} 
+          key = {weatherDay.date}
+          onClick={() => handleCardClick(weatherDay)}>
+          </WeatherCard>
         ))}
       </div>
     </div>

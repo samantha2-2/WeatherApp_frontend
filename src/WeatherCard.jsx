@@ -2,14 +2,14 @@
 import { format, parseISO } from "date-fns"
 import "../WeatherCard.css"
 
-function WeatherCard ({weatherDay}) {
+function WeatherCard ({weatherDay, onClick}) {
         const minTemp = Math.round(weatherDay.day.mintemp_c)
         const maxTemp = Math.round(weatherDay.day.maxtemp_c)
         const date = weatherDay.date
         const formatedDate_Day = format(parseISO(date), "E");
         const formatedDate = format(parseISO(date), "dd.MM"); 
        
-        return <div className="weather-card">
+        return <div className="weather-card" onClick={onClick}>
             <h3>{formatedDate_Day}</h3>
             <p>{formatedDate}</p>
             <div className="weather-img">
