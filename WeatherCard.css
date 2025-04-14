@@ -1,38 +1,46 @@
 .weather-card {
-    background-color: #5d6588;
-    border-radius: 8px;
-    overflow: hidden;
-    transition: transform 0.2s;
-    height: 100%;
-    width: 100px;
-    padding: 1rem;
-    color: white;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-  }
+  background-color: #5d6588;
+  border-radius: 8px;
+  overflow: hidden;
+  transition: transform 0.2s;
+  width: 100px;                
+  height: auto;               
+  padding: 0.75rem;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  flex-shrink: 0;  
+  min-height: 180px;         
+}
   
   .weather-card-container {
     display: flex;
     flex-wrap: wrap;
     gap: 1rem;
     justify-content: center;
-    margin-top: 2rem;
+    margin-top: 1rem;
   }
 
   .weather-info {
     margin-top: 1rem;
     text-align: center;
     color: #f0f0f0;
+    font-size: 0.85rem;
     font-family: 'Segoe UI', sans-serif;
+    height: 75px; /* force equal height for all info blocks */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
   }
   
   .weather-info p {
     font-family: 'Poppins', sans-serif;
     margin: 0.3rem 0;
-    font-size: 1rem;
+    font-size: 0.85rem;
     font-weight: normal; /* just to be explicit */
+    margin: 0.2rem 0;
   }
   
   .weather-info p:first-child {
@@ -51,3 +59,48 @@
     letter-spacing: 0.5px;
   }
 
+  .weather-card-detail-container {
+    flex-basis: 100%;
+    max-width: none;
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+    margin-top: 2rem;
+    padding: 1rem;
+    background-color: #4a4e69;
+    color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+  }
+
+
+  .weather-card-detail {
+    display: flex;
+    align-items: center; 
+    gap: 0.75rem;       
+  }
+ 
+.weather-img {
+  display: block;
+  margin: 0;
+}
+.weather-img img {
+  display: block;
+  margin: 0;
+}
+
+.weather-detail p {
+  font-size: 1.8rem;
+  font-weight: 500;
+  margin: 0;
+  line-height: 1;
+  display: inline-block;
+  vertical-align: baseline;
+}
+
+.weather-detail p.precip-info {
+  font-size: 0.6rem;
+  font-weight: 400;
+  opacity: 0.8;
+  margin-left: 0.5rem;
+}
